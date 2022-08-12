@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plugin(widget)</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <!-- js(제이쿼리가 항상 먼저 와야함) -> ui.js 순서 꼭 맞춰야함 -->
+
+    <!-- script 헤드 안에 두는걸 권장 -->
+    <script>
+        // 페이지 로드 이벤트 함수
+        $(function () { // $(window).ready(function () {})
+            // 아코디언(Accordion)
+            $("#accord").accordion({
+                heightStyle: "content", // 내용에 따라 높이 조절
+                active: 1, // 두번째 데이터를 페이지 로드시 보여줌
+                animate: 500,
+                collapsible: true, // 열린 아코디언 다시 클릭하면 닫김(default가 false)
+                activate: function (ev, ui) {
+                    // console.log(ui.newHeader.data("id"))
+                    // console.log(ui.oldHeader.data("id"))
+                }
+            });
+
+            // 데이트 피커(Datepicker) => 캘린더
+            $("#sdt").datepicker({
+                dateFormat: 'yy-mm-dd', // 날짜 형식 변경
+                minDate: -7, // == -1W
+                maxDate: "+1M +10D", // 오늘 날짜로부터 7일전, 한달 + 열흘 뒤까지의 날짜만 선택 가능, new Date() => 특정 날짜 지정
+                onSelect: function (dt, obj) {
+                    // console.log(dt); // 선택한 날짜 출력(년,월,일)
+                    // console.dir(obj);
+                    // console.log(obj.currentDay); // 일자만 출력
+                    // console.log(obj.currentMonth + 1); // 월만 출력, 월은 배열로 시작해서 +1 해줘야함
+                }
+            });
+
+            // 모달(Dialog)
+            let popup = $("#dialog").dialog({
+                autoOpen: false, // 페이지 로드시 창 안 보임
+                modal: true, // 모달창 열렸을때 다른창 제어 X
+                open: function (event, ui) {
+                    console.log("오픈");
+                },
+                buttons: {
+                    'save': function () { // '버튼라벨' : function(){}
+
+                    },
+                    'close': function () {
+
+                    }
+                }
+            });
+
+            // 버튼 클릭시 팝업창 열리도록
+            $("#btn").on("click", function () {
+                popup.dialog("open");
+            });
+
+            // 데이터 테이블
+            let empDt = $('#myTable').DataTable({
+                ajax: {
+                    url: 'http://localhost/myserver/empSelect',
+                    dataSrc: ''
+                },
+                columns: [
+                    { data: 'employee_id' },
+                    { data: 'last_name' },
+                    { data: 'salary' },
+                    { data: 'job_id' }
+                ]
+            });
+
+            // 데이터 테이블 이벤트   타입 : object, DataTables.Api, String, array
+            empDt.on("select", function (e, dt, type, indexes) {
+                // console.log(type);
+                // console.log(indexes);
+            }); 
+        })
+    </script>
+</head>
+
+<body>
+    <div id="accord">
+        <h3 data-id="100">java</h3>
+        <div>
+            <button id="btn">등록</button>
+            <input>
+        </div>
+
+        <h3 data-id="101">jsp</h3>
+
+        <div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <td>번호</td>
+                        <td>이름</td>
+                        <td>급여</td>
+                        <td>직무</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="dialog" title="Basic dialog">
+        <input id="sdt">
+        <input> id
+        <input> name
+    </div>
+</body>
+
+</html>

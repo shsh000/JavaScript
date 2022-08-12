@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button id="btn">등록</button>
+    <script>
+        // 등록 버튼 클릭하면 contents = test 값이 들어가도록
+        $("#btn").on("click", function () {
+            // post
+            let url = "http://localhost/myserver/todoInsert";
+
+            // ajax 함수
+            $.ajax(url, {
+                // async: false, // 동기식(ajax는 기본이 비동기식이기 때문에 잘 사용하지않음)
+                method: "post", // get은 default기 때문에 생략가능
+                data: {
+                    contents: 'ajax test4'
+                },
+            }).done(obj => { // 람다식, function() 써도 됨
+                console.log(obj);
+            }).fail((XHR, statusText) => {
+                console.dir(XHR);
+                console.log(statusText);
+            });
+        })
+
+        // $.ajax(url, {
+        // // async: false, // 동기식(ajax는 기본이 비동기식이기 때문에 잘 사용하지않음)
+        // method: "post", // get은 default기 때문에 생략가능
+        // data: {
+        //     contents: 'ajax test3'
+        // },
+        // }).done(function (data, status, xhr) {
+        // console.log(data); // 응답 결과 출력 
+        // console.log(status); // 전송 성공, 실패 출력
+        // })
+        // })
+
+        // get
+        // $("#btn").on("click", function () {
+        // let url = "http://localhost/myserver/todoSelect";
+
+        // // ajax 함수
+        // $.ajax(url, {
+        //     method: "get", // get이 default기 때문에 생략가능
+        //     data:
+        // }).done(obj => {}) // function() 써도 됨
+    </script>
+</body>
+
+</html>

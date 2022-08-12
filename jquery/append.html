@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        div {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="basket">
+    </div>
+    <div id="apple">사과</div>
+    <div id="banana">바나나</div>
+    <div id="kiwi">키위</div>
+
+    <script>
+        // $("#basket").append($("#apple")) => basket 안에 apple div 추가
+        // $("#basket").prepend($("#kiwi")) => basket 안 첫번째 자리에 div 추가
+
+        // $("#apple").appendTo("#basket") => apple div를 부모 div에 붙이기($ 생략가능)
+        // $("#banana").prependTo("#basket") => apple div를 부모 div 첫번째 자리에 붙이기
+
+        // $("#basket").append($("#apple").clone()) => basket 안에 apple div 복사해서 추가
+
+        // $("#basket").append("<div>수박</div>") => div 태그 생성
+        // $("#basket").append($("<div>").html("딸기")) => div 태그 만들어서 basket 안에 추가
+        // $("<div>").html("귤").appendTo($("#basket"))
+
+        // parent > child => $("div > p") : 바로 밑에 있는 자식만
+        // parent descendant => $("div p") : 모든 자손
+
+        // $ => end
+        // ^ => start
+
+        // 태그 찾기 html()
+        // 내용 html(" ")
+        // 제거 remove()
+
+        // 태그 생성 $("<div>내용</div>") => createElement("div")
+    </script>
+</body>
+
+
+
+</html>

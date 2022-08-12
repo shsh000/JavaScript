@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+<body>
+    <div><sapn>java</sapn><button type="button" class="btn">선택</button></div>
+    <div><sapn>spring</sapn><button type="button" class="btn">선택</button></div>
+    <div><sapn>javascript</sapn><button type="button" class="btn">선택</button></div>
+    <script>
+        // Class가 btn인 태그 찾기
+        let btn = document.getElementsByClassName("btn");
+        for (b of btn)
+            b.addEventListener("click", function() {
+                // window.event.target = this
+                let spanText = this.previousElementSibling.innerHTML;
+                alert(spanText);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroupEvent</title>
+    <script>
+        window.addEventListener("load", function() { // $(function(){}) => jquery
+            // 추가 버튼 핸들러
+            btn.addEventListener("click", function() {
+                // let div = document.createElement("div");
+                // result.appendChild(div); // document.getElementById("result").appendChild(div);
+                // div.innerHTML = txt.value;
+                // txt.value = "";
+                result.innerHTML += `<div class="addDiv">${txt.value}</div>`;
+            })
+            // div 클릭 핸들러(그룹 이벤트, 추가된 div까지 적용되도록)
+            result.addEventListener("click", function() {
+                if(event.target.classList.contains("addDiv")) { // 해당 div 클래스나 태그가 있는지 확인
+                    event.target.style.color = "orange";
+                }
+                // console.log(this); => this = result
+                console.dir(event.target); // log, table, dir
+
+                // if (event.target.tagName = 'DIV') {
+                //     event.target.style.color = "orange";
+                // }
+            })
+
+            // div 클릭 핸들러(추가된 div는 적용안됨, 그룹 이벤트 걸어줘야함)
+            // let divs = document.getElementsByClassName("addDiv"); // Collection, noArray
+            // for (div of divs) {
+            //     div.addEventListener("click", function() {
+            //         this.style.color = "orange";
+            //     })
+            // }
+
+            // divs.array.forEach(elem => {
+            //     elem.addEventListener("click", function() {
+            //         this.style.color = "orange";
+            //     })
+            // })
+        })
+    </script>
+</head>
+<body>
+    <input id="txt"><button id="btn">추가</button><br>
+    <div id="result">
+        <div class="addDiv">aaa</div>
+        <div class="addDiv">bbb</div>
+    </div>
+</body>
+</html>

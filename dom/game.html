@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img1 {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 150px;
+        }
+        #img2 {
+            position: absolute;
+            left: 100px;
+            top: 300px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnStart">시작</button>
+    <button id="btnStop">중지</button>
+    <img src="../images/2.png" id="img1">
+    <img src="../images/3.png" id="img2">
+    <script>
+        img1.style.left = "100px";
+        img1.style.top = "100px";
+        img2.style.left = "100px";
+        img2.style.top = "300px";
+        
+        function move() {
+            let move1 = parseInt(Math.random() * 20);
+            let move2 = parseInt(Math.random() * 20);
+            console.log("1: " + move1);
+            console.log("2: " + move2)
+
+            img1.style.left = parseInt(img1.style.left) + move1 + "px"
+            img2.style.left = parseInt(img1.style.left) + move2 + "px"
+            if (parseInt(img1.style.left) > 500) {
+                window.clearInterval(timer1); // 타이머 정지
+                alert("img1 WIN");
+            }
+            else if (parseInt(img2.style.left) > 500) {
+                window.clearInterval(timer1); // 타이머 정지
+                alert("img2 WIN");
+            }
+        }
+        var timer1; // 전역 변수
+
+        // 버튼 클릭시 시작
+        btnStart.addEventListener("click", function() {
+            timer1 = window.setInterval(move, 200);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<<<<<<< HEAD
+    <h3>영화상세정보</h3>
+    
+=======
+    <input>
+    <button type="button" id="btn">영화상세정보</button>
+>>>>>>> ebdb4b02522b63c305dcd73e6a257d8cf3fed8a7
+    <table border="1">
+        <thead>
+            <tr>
+                <td>영화코드</td>
+                <td>감독명</td>
+                <td>영화제목</td>
+                <td>배우명</td>
+            </tr>
+        </thead>
+        <tbody id="result">
+<<<<<<< HEAD
+            
+=======
+            <tr>
+
+            </tr>
+>>>>>>> ebdb4b02522b63c305dcd73e6a257d8cf3fed8a7
+        </tbody>
+    </table>
+    <script>
+        // 박스오피스 조회
+        btn.addEventListener("click", function () {
+<<<<<<< HEAD
+            let url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20209343";
+            fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    let box= `<td>${obj.movieInfoResult.movieInfo.movieCd}</td>
+                              <td>${obj.movieInfoResult.movieInfo.directors[0].peopleNm}</td>
+                              <td>${obj.movieInfoResult.movieInfo.movieNm}</td>`;
+
+                    let obj1 = obj.movieInfoResult.movieInfo.actors;
+                    let actors = "";
+                    for (obj of obj1) {
+                        actors += `${obj.peopleNm}<br>`;
+                    }
+
+                    result.innerHTML += `<table><tr>${box}<td>${actors}</td></tr></table>`;
+=======
+            let url =
+                "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20209343";
+            fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    result.innerHTML += `<table><tr><td>${obj.movieInfoResult.movieInfo.movieCd}</td></tr>
+                                              <tr><td>${obj.movieInfoResult.movieInfo.directors[0].peopleNm}</td></tr>
+                                              <tr><td>${obj.movieInfoResult.movieInfo.movieNm}</td></tr></table>`
+
+                    let obj1 = obj.movieInfoResult.movieInfo.actors;
+                    for (obj of obj1) {
+                        result.innerHTML += `<tr><td>${obj.peopleNm}</td></tr>`;
+                    }
+>>>>>>> ebdb4b02522b63c305dcd73e6a257d8cf3fed8a7
+                })
+        })
+    </script>
+</body>
+
+</html>

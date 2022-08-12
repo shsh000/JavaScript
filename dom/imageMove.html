@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: relative;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/2.png" id="img">
+    <script>
+        img.style.left = "100px";
+        img.style.top = "100px";
+        window.addEventListener("keydown", function() {
+            let a = window.event.keyCode; // window 는 생략가능
+            if (a == 37) { // 방향키 <
+                img.style.left = parseInt(img.style.left) - 10 + "px"
+            }
+            else if (a == 38) { // 방향키 ^
+                img.style.top = parseInt(img.style.top) - 10 + "px"
+
+            }
+            else if (a == 39) { // 방향키 >
+                img.style.left = parseInt(img.style.left) + 10 + "px"
+            }
+            else {
+                img.style.top = parseInt(img.style.top) + 10 + "px"
+            }
+
+        })
+    </script>
+</body>
+</html>

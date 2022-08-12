@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>postFetch</title>
+<script>
+        window.addEventListener("load", function() {
+            btn.addEventListener("click", loadDoc); // 버튼 클릭시 loadDoc 함수 호출
+        })
+        // Fetch 방식
+        function loadDoc() {
+            const url = "https://jsonplaceholder.typicode.com/posts"; // 1. 서버 URL
+            fetch(url) // url 만들어서 open, send까지 처리
+            .then(res => res.json()) // 응답결과 parsing
+            .then(obj => { // 응답결과를 받아서 처리
+                for (a of obj) 
+                    list.innerHTML += `<tr>
+                                        <td>${a.id}</td>
+                                        <td>${a.title}</td>
+                                        <td>${a.userId}</td>
+                                       </tr>`
+            })
+        }
+</script>
+</head>
+
+<body>
+    <h3>post</h3>
+    <button type = "button" id="btn">ajax 요청</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody id="list">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

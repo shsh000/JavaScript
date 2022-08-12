@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input>
+    <button type="button" id="btn">영화상세정보</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>영화코드</td>
+                <td>배우명</td>
+                <td>감독명</td>
+                <td>영화제목</td>
+            </tr>
+        <thead>
+        <tbody id="result">
+            <tr>
+
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // 박스오피스 조회
+        btn.addEventListener("click", function () {
+            let url =
+                "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20209343";
+            fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    let obj1 = obj.movieInfoResult.movieInfo.movieCd;
+                    let obj2 = obj.movieInfoResult.movieInfo.actors;
+                    let obj3 = obj.movieInfoResult.movieInfo.directors;
+                    let obj4 = obj.movieInfoResult.movieInfo.movieNm;
+                    let tr = document.createElement("tr");
+                    document.getElementById("result").appendChild(tr);
+                    
+                    for (a of obj1) {
+                        tr.innerHTML += `<td>${obj1}</td>`
+                    }
+                    for (b of obj2) {
+                        tr.innerHTML += `<td>${b.peopleNm}</td>`
+                    }
+                })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input>
+    <button type="button" id="btn">영화상세정보</button>
+    <div id="result">
+        <div><span>영화코드</span> <span>감독명</span> <span>영화제목</span> <span>배우명</span></div>
+    </div>
+    <script>
+        // 박스오피스 조회
+        btn.addEventListener("click", function () {
+            let url =
+                "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=20209343";
+            fetch(url)
+                .then(res => res.json())
+                .then(obj => {
+                    // let obj1 = obj.movieInfoResult.movieInfo.movieCd;
+                    // let obj3 = obj.movieInfoResult.movieInfo.directors;
+                    // let obj4 = obj.movieInfoResult.movieInfo.movieNm;
+
+                    result.innerHTML += `<div><span>${obj.movieInfoResult.movieInfo.movieCd}</span>
+                                              <span>${obj.movieInfoResult.movieInfo.directors[0].peopleNm}</span>
+                                              <span>${obj.movieInfoResult.movieInfo.movieNm}</span></div>`
+
+                    let obj1 = obj.movieInfoResult.movieInfo.actors;
+                    for (obj of obj1) {
+                        result.innerHTML += `<span>${obj.peopleNm}</span>&nbsp;`
+                    }
+                })
+        })
+    </script>
+</body>
+
+</html>

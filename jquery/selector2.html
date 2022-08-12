@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td id="td1" data-name="hong">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+        <tr>
+            <td data-name="kim">4</td>
+            <td>5</td>
+            <td>6</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+        <tr>
+            <td data-name="park">7</td>
+            <td>8</td>
+            <td>9</td>
+            <td><button type="button" class="btn">조회</button></td>
+        </tr>
+    </table>
+    <script>
+        // 클릭한 버튼의 첫번재 td 내용 출력
+        $(".btn").on("click", function() {                           
+            let b = $(this).closest("tr").find("td").first().data("name"); // td 태그 안의 첫번째 데이터 이름
+            //let b = $(this).closest("tr").children().first().html(); // first() => 자식태그
+            // let b = $(this).closest("tr").find("td:first").html(); => find를 주로 선호(자손까지 모두 찾음)
+            console.log(b);
+        })
+    </script>
+</body>
+</html>

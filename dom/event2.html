@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event2</title>
+</head>
+<body>
+    <div id="div1" class="div">
+        <div>
+            <sapn>java</sapn><span>3000</span><button type="button" class="btn">선택</button>
+        </div>
+    </div>    
+    <div id="div2"><sapn>spring</sapn><span>4000</span><button type="button" class="btn">선택</button></div>
+    <div id="div3"><sapn>javascript</sapn><span>2000</span><button type="button" class="btn">선택</button></div>
+    <script>
+        // Class가 btn인 태그 찾기
+        let btn = document.getElementsByClassName("btn");
+        for (b of btn)
+            b.addEventListener("click", function() {
+                // window.event.target = this
+                // 부모 속성의 id 태그 읽기
+                // let spanText = this.parentElement.getAttribute("id");
+                // alert(spanText);
+
+                // 부모 속성의 첫번째 자식 텍스트 가져오기
+                let spanText = this.parentElement.firstChild.innerHTML;
+                let sp1 = this.parentElement.getElementsByTagName("span")[0].innerHTML;
+                let sp2 = this.parentElement.getElementsByTagName("span")[1].innerHTML;
+                console.log(spanText, sp1, sp2);
+        })
+    </script>
+</body>
+</html>

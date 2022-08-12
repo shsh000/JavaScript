@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="fruit"><button id="btn">추가</button>
+    <select id="list"></select>
+    <script>
+        btn.addEventListener("click", function() {
+            // input 태그의 입력값을 가지고 option 태그를 만들어서 추가
+            let t1 = document.createElement("option");
+            document.getElementById("list").appendChild(t1);
+            t1.innerHTML = fruit.value;
+            fruit.value = ""; // 검색창 비우기
+        })
+        fruit.addEventListener("keypress", function() {
+            // console.log(window.event.keyCode);
+            // 13 = enter 아스키 코드
+            if (window.event.keyCode == 13) {
+                btn.click(); // 클릭 함수 호출
+            }
+        })
+        window.addEventListener("keydown", function() {
+            console.log(window.event.keyCode);
+        })
+    </script>
+</body>
+</html>

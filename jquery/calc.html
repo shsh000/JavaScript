@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="num1" value="15">+
+    <input id="num2" value="3">=
+    <input id="result"> <button>확인</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $("button").bind("click", function() {
+            let n1 = parseInt($("#num1").val());
+            let n2 = parseInt($("#num2").val());
+            let rs = parseInt($("#result").val());
+            if (n1 + n2 == rs) {
+                alert("정답입니다.");
+            } else {
+                alert("틀렸습니다.");
+            }
+        })
+    </script>
+</body>
+
+
+</html>
